@@ -3,11 +3,9 @@
 ![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-**Companion repository for**: "Automated Causal Discovery for Heterogeneous Treatment Effect Identification in Medicaid Population Health Programs: A Mechanistic Approach"
+**Companion repository for**: "Pathways Explaining Which Patients Benefit from Which Intervention Types and Why: A Causal Discovery Analysis of a Medicaid Population Health Program"
 
 **Authors**: Sanjay Basu, Sadiq Y. Patel, Parth Sheth, Bhairavi Muralidharan, Namrata Elamaran, Aakriti Kinra, Rajaie Batniji
-
-**Submitted to**: American Journal of Epidemiology
 
 ---
 
@@ -15,16 +13,7 @@
 
 This repository contains code for applying automated causal discovery algorithms (Peter-Clark and Greedy Equivalence Search) to identify intervention-specific mechanisms explaining heterogeneous treatment effects in Medicaid population health programs.
 
-### Key Findings
-
-- **Therapy** reduces psychiatric admissions among older adults with recent hospitalizations (E-value 2.8)
-- **Pharmacy** demonstrates dose-dependent cost reductions through medication adherence (E-value 3.1)
-- **Community health workers** reduce ED visits addressing social determinants (E-value 3.4)
-- **Care coordination** reduces ED visits among females through navigation support (E-value 2.6)
-
-All mechanisms survived Benjamini-Hochberg false discovery rate correction and showed high bootstrap stability (82-98% discovery rates).
-
----
+--
 
 ## Repository Structure
 
@@ -265,10 +254,3 @@ We welcome contributions! Please:
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
----
-
-## Related Publications
-
-1. Sheth P, Anders S, Basu S, Baum A, Patel SY. Comparing alternative approaches to care management prioritization: a prospective comparative cohort study of acute care utilization and equity among Medicaid beneficiaries. *Health Services Research*. In press.
-
-2. Basu S, Patel SY, et al. Automated causal discovery for mechanistic insights in population health programs. *American Journal of Epidemiology*. Submitted 2025.
