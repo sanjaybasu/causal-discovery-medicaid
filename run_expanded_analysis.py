@@ -95,7 +95,7 @@ def visualize_causal_graph(
     labels = {node: node.replace("_", "\n") for node in G.nodes()}
     nx.draw_networkx_labels(
         G, pos, labels=labels,
-        font_size=8, font_weight="bold", ax=ax
+        font_size=14, font_weight="bold", ax=ax
     )
     
     # Edges
@@ -191,10 +191,10 @@ def main():
         intervention_buffer_days=30,
     )
     
-    # Use larger sample
+    # Use full dataset
     dataset, metadata = load_causal_dataset_enhanced_optimized(
         config=config,
-        sample_size=5000,  # Increased from 2000
+        sample_size=None,  # Use full dataset
     )
     
     print(f"   Dataset shape: {dataset.shape}")

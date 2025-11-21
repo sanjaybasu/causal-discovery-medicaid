@@ -3,9 +3,11 @@
 ![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-**Companion repository for**: "Pathways Explaining Which Patients Benefit from Which Intervention Types and Why: A Causal Discovery Analysis of a Medicaid Population Health Program"
+**Companion repository for**: "Automated Causal Discovery for Heterogeneous Treatment Effect Identification in Medicaid Population Health Programs: A Mechanistic Approach"
 
 **Authors**: Sanjay Basu, Sadiq Y. Patel, Parth Sheth, Bhairavi Muralidharan, Namrata Elamaran, Aakriti Kinra, Rajaie Batniji
+
+**Submitted to**: American Journal of Epidemiology
 
 ---
 
@@ -13,7 +15,16 @@
 
 This repository contains code for applying automated causal discovery algorithms (Peter-Clark and Greedy Equivalence Search) to identify intervention-specific mechanisms explaining heterogeneous treatment effects in Medicaid population health programs.
 
---
+### Key Findings
+
+- **Therapy** reduces psychiatric admissions among older adults with recent hospitalizations (E-value 2.8)
+- **Pharmacy** demonstrates dose-dependent cost reductions through medication adherence (E-value 3.1)
+- **Community health workers** reduce ED visits addressing social determinants (E-value 3.4)
+- **Care coordination** reduces ED visits among females through navigation support (E-value 2.6)
+
+All mechanisms survived Benjamini-Hochberg false discovery rate correction and showed high bootstrap stability (82-98% discovery rates).
+
+---
 
 ## Repository Structure
 
@@ -23,15 +34,22 @@ notebooks/causal_discovery/
 ├── data_loader_enhanced.py          # Data loading and temporal structuring
 ├── algorithms.py                    # PC and GES causal discovery algorithms
 ├── run_expanded_analysis.py         # Main analysis script
+├── sensitivity_analyses.py          # Comprehensive sensitivity checks (propensity, falsification)
+├── two_stage_mechanism_discovery.py # Two-stage HTE mechanism discovery
+├── calculate_cates.py               # CATE calculation with bootstrap CIs
+├── analyze_thresholds.py            # Empirical threshold analysis
 ├── test_algorithms.py               # Synthetic data validation
 └── run_discovery.ipynb              # Interactive notebook
 
 results/causal_discovery_expanded/
-├── pc_graph_expanded.png            # PC algorithm causal graph
-├── ges_graph_expanded.png           # GES algorithm causal graph
 ├── edge_lists/                      # Discovered edges (CSV)
 ├── mechanism_analysis/              # Intervention-specific pathways (JSON)
 └── summary/                         # Analysis summaries (JSON)
+
+figures/
+├── figure1.png                      # Temporal tier structure
+├── figure2.png                      # PC algorithm causal graph
+└── figure3.png                      # GES algorithm causal graph
 ```
 
 ---
@@ -106,6 +124,22 @@ cd notebooks/causal_discovery
 python run_expanded_analysis.py --sample_size 5000 --output_dir ../../results/causal_discovery_expanded
 ```
 
+### Running Sensitivity Analyses
+
+To run the comprehensive suite of sensitivity checks (propensity score trimming, falsification tests, parameter sensitivity):
+
+```bash
+python sensitivity_analyses.py
+```
+
+### Running Two-Stage Mechanism Discovery
+
+To execute the two-stage framework (HTE subgroup identification followed by subgroup-specific causal discovery):
+
+```bash
+python two_stage_mechanism_discovery.py
+``````
+
 **Arguments**:
 - `--sample_size`: Number of members to sample (default: 5000)
 - `--alpha`: Significance level for PC algorithm (default: 0.05)
@@ -117,7 +151,7 @@ python run_expanded_analysis.py --sample_size 5000 --output_dir ../../results/ca
 
 The analysis generates:
 
-1. **Causal Graphs**: PNG visualizations of PC and GES graphs
+1. **Causal Graphs**: PNG visualizations (figures/figure1.png, figure2.png, figure3.png)
 2. **Edge Lists**: CSV files with discovered causal relationships
 3. **Mechanism Analysis**: JSON files with intervention-specific pathways
 4. **Summary Statistics**: JSON with algorithm convergence metrics
@@ -254,3 +288,10 @@ We welcome contributions! Please:
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+---
+
+## Related Publications
+
+1. Sheth P, Anders S, Basu S, Baum A, Patel SY. Comparing alternative approaches to care management prioritization: a prospective comparative cohort study of acute care utilization and equity among Medicaid beneficiaries. *Health Services Research*. In press.
+
+2. Basu S, Patel SY, et al. Automated causal discovery for mechanistic insights in population health programs. *American Journal of Epidemiology*. Submitted 2025.
