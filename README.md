@@ -1,13 +1,9 @@
-# Automated Causal Discovery for Medicaid Population Health Programs
+# Graphical Structure Learning Identifies Hypothesized Mechanisms for Heterogeneous Treatment Effects in Medicaid Population Health Programs
 
 ![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-**Companion repository for**: "Automated Causal Discovery for Heterogeneous Treatment Effect Identification in Medicaid Population Health Programs: A Mechanistic Approach"
-
-**Authors**: Sanjay Basu, Sadiq Y. Patel, Parth Sheth, Bhairavi Muralidharan, Namrata Elamaran, Aakriti Kinra, Rajaie Batniji
-
-**Submitted to**: American Journal of Epidemiology
+**Authors**: Sanjay Basu, Sadiq Y. Patel, Parth Sheth
 
 ---
 
@@ -15,14 +11,6 @@
 
 This repository contains code for applying automated causal discovery algorithms (Peter-Clark and Greedy Equivalence Search) to identify intervention-specific mechanisms explaining heterogeneous treatment effects in Medicaid population health programs.
 
-### Key Findings
-
-- **Therapy** reduces psychiatric admissions among older adults with recent hospitalizations (E-value 2.8)
-- **Pharmacy** demonstrates dose-dependent cost reductions through medication adherence (E-value 3.1)
-- **Community health workers** reduce ED visits addressing social determinants (E-value 3.4)
-- **Care coordination** reduces ED visits among females through navigation support (E-value 2.6)
-
-All mechanisms survived Benjamini-Hochberg false discovery rate correction and showed high bootstrap stability (82-98% discovery rates).
 
 ---
 
@@ -190,86 +178,10 @@ Temporal precedence constraints forbid edges from later to earlier tiers.
 - **Multiple testing**: Benjamini-Hochberg FDR at q=0.05
 - **Varying α**: Test PC at 0.01, 0.05, 0.10
 
----
-
-## Validation
-
-### Synthetic Data Tests
-
-Run validation on synthetic data with known causal structure:
-
-```bash
-python test_algorithms.py
-```
-
-This generates synthetic data from a predefined DAG and tests algorithm recovery accuracy.
-
-**Expected Results**:
-- Precision: ~85-90%
-- Recall: ~75-85%
-- F1-score: ~80-87%
-
-### Real Data Analysis
-
-Analyses use de-identified Medicaid claims data (not included due to privacy restrictions). Aggregate results and example outputs are provided in `results/`.
-
----
-
-## Citation
-
-If you use this code, please cite:
-
-```bibtex
-@article{basu2025causal,
-  title={Automated Causal Discovery for Heterogeneous Treatment Effect Identification in Medicaid Population Health Programs: A Mechanistic Approach},
-  author={Basu, Sanjay and Patel, Sadiq Y and Sheth, Parth and Muralidharan, Bhairavi and Elamaran, Namrata and Kinra, Aakriti and Batniji, Rajaie},
-  journal={American Journal of Epidemiology},
-  year={2025},
-  note={Submitted}
-}
-```
-
----
-
-## Data Availability
-
-Individual-level Medicaid data cannot be shared due to patient privacy restrictions and data use agreements with state agencies. Researchers interested in replicating analyses may:
-
-1. Apply for data access through state Medicaid agencies
-2. Use the provided code with similar datasets
-3. Contact the corresponding author for aggregate results
-
-Synthetic example data is provided in `examples/` for code testing.
-
----
-
-## License
-
-MIT License - see [LICENSE](LICENSE) file for details
-
----
-
-## Contact
-
-**Corresponding Author**:  
-Sanjay Basu, MD, PhD  
-Waymark Care  
-Email: sanjay.basu@waymarkcare.com
-
-**Issues and Questions**:  
-Please open an issue on GitHub or contact the corresponding author.
-
----
-
-## Acknowledgments
-
-We thank the Waymark Care clinical and data science teams for support in data collection and validation, and state Medicaid agencies for data access under data use agreements.
-
----
 
 ## Version History
 
-- **v1.0.0** (2025-01): Initial release with AJE submission
+- **v1.0.0** (2025-01): Initial release
   - PC and GES algorithms
   - Temporal constraint enforcement
   - Multiple testing correction
@@ -288,10 +200,3 @@ We welcome contributions! Please:
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
----
-
-## Related Publications
-
-1. Sheth P, Anders S, Basu S, Baum A, Patel SY. Comparing alternative approaches to care management prioritization: a prospective comparative cohort study of acute care utilization and equity among Medicaid beneficiaries. *Health Services Research*. In press.
-
-2. Basu S, Patel SY, et al. Automated causal discovery for mechanistic insights in population health programs. *American Journal of Epidemiology*. Submitted 2025.
